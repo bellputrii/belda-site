@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🌐 Personal Portfolio Website
 
-## Getting Started
+<!-- Opsional: tambahkan screenshot jika ada -->
 
-First, run the development server:
+📌 Deskripsi
 
-```bash
+Website portfolio ini dibuat untuk menampilkan profil, pengalaman, dan proyek saya sebagai Web Developer. Dibangun menggunakan Next.js, Tailwind CSS, dan React dengan fokus pada performa, desain responsif, dan pengalaman pengguna yang baik.
+
+✨ Fitur Utama
+
+✅ Responsive Design (mobile-first & desktop-friendly)
+
+✅ Dark & Light Mode (opsional)
+
+✅ Halaman Utama (Landing Page) dengan hero section
+
+✅ About Page untuk informasi personal
+
+✅ Skills Section menampilkan teknologi yang dikuasai
+
+✅ Projects Section untuk showcase portofolio
+
+✅ Contact Page dengan form yang dapat dikirimkan ke email
+
+✅ SEO Friendly dan fast loading
+
+🛠️ Teknologi yang Digunakan
+
+Next.js 14 – Framework React untuk SSR & SSG
+
+React – Library untuk UI interaktif
+
+Tailwind CSS – Styling yang efisien dan konsisten
+
+TypeScript (opsional) – Supaya lebih aman dan maintainable
+
+shadcn/ui – Komponen UI siap pakai
+
+📂 Struktur Proyek
+project-name/
+├── public/            # Assets (gambar, icon, dll)
+├── components/        # Reusable UI components
+│   ├── navbar/
+│   ├── footer/
+│   └── ...
+├── app/
+│   ├── page.tsx       # Landing page
+│   ├── about/
+│   │   └── page.tsx   # About page
+│   └── projects/
+│       └── page.tsx   # Projects page
+├── styles/            # Global styles
+├── package.json
+└── README.md
+
+🚀 Cara Menjalankan Proyek
+
+Pastikan Node.js sudah terinstall di komputer kamu.
+
+# Clone repository
+git clone https://github.com/username/portfolio-website.git
+
+# Masuk ke folder proyek
+cd portfolio-website
+
+# Install dependencies
+npm install
+
+# Jalankan project di mode development
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Buka di browser
+http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+📦 Build untuk Production
+npm run build
+npm start
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🔍 Preview
 
-## Learn More
+Jika kamu ingin melihat live demo, kunjungi:
+🔗 Live Demo
 
-To learn more about Next.js, take a look at the following resources:
+🤝 Kontribusi
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Jika kamu ingin berkontribusi, silakan fork repo ini dan ajukan pull request.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+📄 Lisensi
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Proyek ini menggunakan lisensi MIT. Silakan gunakan sesuai kebutuhan.
