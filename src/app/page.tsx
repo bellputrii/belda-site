@@ -1,10 +1,12 @@
 import React from 'react';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 const LandingPage = () => {
   return (
     <div className="font-sans text-gray-800 bg-gray-50">
       {/* Header */}
-      <header className="fixed top-0 left-0 w-full bg-[#2C4E35] font-bold  text-white py-4 px-6 flex justify-between items-center shadow-md z-50">
+      {/* <header className="fixed top-0 left-0 w-full bg-[#2C4E35] font-bold  text-white py-4 px-6 flex justify-between items-center shadow-md z-50">
         <div className="flex items-center space-x-2">
           <div className="w-8 h-8 bg-[#FFA800] rounded-full flex items-center justify-center font-bold">B</div>
           <span className="font-semibold text-lg">Belda Putri Pramono</span>
@@ -20,7 +22,8 @@ const LandingPage = () => {
         </nav>
        
         <button className="bg-[#FFA800] hover:bg-[#ffaa00c5] text-white px-4 py-2 rounded-full font-semibold transition-colors">Contact Me</button>
-      </header>
+      </header> */}
+      <Navbar />
 
       {/* Hero Section */}
       <section
@@ -372,7 +375,7 @@ const LandingPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#2C4E35] text-[#FFA800] mt-20 py-12 text-center">
+      {/* <footer className="bg-[#2C4E35] text-[#FFA800] mt-20 py-12 text-center">
         <h3 className="text-xl font-bold mb-2">Belda Putri Pramono</h3>
         <p className="mb-4">Frontend Developer</p>
         <nav className="space-x-4 text-sm mb-6">
@@ -384,7 +387,8 @@ const LandingPage = () => {
           <a href="#contact" className="hover:text-white transition-colors">Contact</a>
         </nav>
         <p className="text-xs">©2025 – Created by Belda Putri Pramono. All rights reserved</p>
-      </footer>
+      </footer> */}
+      <Footer />
     </div>
   );
 };
