@@ -295,16 +295,16 @@ const LandingPage = () => {
             {
               title: "Website Portfolio",
               desc: "Personal landing page with modern and clean design.",
-              image: "/portfolio/landing.png",
+              image: "/belda-site.png",
               demo: "#",
               preview: "#",
             },
             {
               title: "Pelaut Hebat",
               desc: "Education platform for sailors with interactive features.",
-              image: "/portfolio/pelauthebat.png",
-              demo: "#",
-              preview: "#",
+              image: "/pelaut-hebat.png",
+              demo: "https://pelauthebat.vercel.app/",
+              preview: "https://github.com/bellputrii/fe_pelautHebat.git",
             },
             {
               title: "Growish LabGizi",
@@ -327,58 +327,101 @@ const LandingPage = () => {
               demo: "https://visitor.asetdesakarangtengah.my.id/",
               preview: "#",
             },
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="group bg-white rounded-xl md:rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
-            >
-              {/* Thumbnail */}
-              <div className="relative h-40 md:h-48 w-full overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-[#2C4E35] to-[#FFA800] flex items-center justify-center text-white text-4xl">
-                  {item.title.charAt(0)}
+          ].map((item, i) => {
+            // Function to generate consistent color based on title
+            const stringToColor = (str: string): string => {
+              let hash = 0;
+              for (let i = 0; i < str.length; i++) {
+                hash = str.charCodeAt(i) + ((hash << 5) - hash);
+              }
+              let color = '#';
+              for (let i = 0; i < 3; i++) {
+                const value = (hash >> (i * 8)) & 0xFF;
+                color += ('00' + value.toString(16)).substr(-2);
+              }
+              return color;
+            };
+            
+            const bgColor = stringToColor(item.title);
+            
+            return (
+              <div
+                key={i}
+                className="group bg-white rounded-xl md:rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
+              >
+                {/* Thumbnail with image and fallback */}
+                <div className="relative h-40 md:h-48 w-full overflow-hidden">
+                  {/* Try to load image first */}
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-100 group-hover:opacity-90"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.opacity = '0';
+                    }}
+                  />
+                  
+                  {/* Fallback with gradient background and first letter */}
+                  <div 
+                    className="w-full h-full bg-gradient-to-br from-[#2C4E35] to-[#FFA800] flex items-center justify-center text-white text-4xl font-bold"
+                  >
+                    {item.title.charAt(0)}
+                  </div>
+                  
+                  {/* Hover overlay with buttons */}
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="flex gap-3 md:gap-4">
+                      <a 
+                        href={item.demo} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center text-[#2C4E35] hover:bg-[#FFA800] transition-colors"
+                      >
+                        ↗
+                      </a>
+                      <a 
+                        href={item.preview} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center text-[#2C4E35] hover:bg-[#FFA800] transition-colors"
+                      >
+                        👁️
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <div className="flex gap-3 md:gap-4">
-                    <a href={item.demo} target="_blank" rel="noopener noreferrer" className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center text-[#2C4E35] hover:bg-[#FFA800] transition-colors">
-                      ↗
+
+                {/* Content */}
+                <div className="p-4 md:p-6">
+                  <h3 className="text-base md:text-lg font-semibold text-[#2C4E35] group-hover:text-[#FFA800] transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 text-xs md:text-sm mt-2">{item.desc}</p>
+                  <div className="flex gap-2 md:gap-3 mt-4">
+                    <a
+                      href={item.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 text-center bg-[#2C4E35] text-white px-3 py-2 md:px-4 md:py-2 rounded-lg text-xs md:text-sm hover:bg-[#FFA800] transition-colors"
+                    >
+                      Demo
                     </a>
-                    <a href={item.preview} target="_blank" rel="noopener noreferrer" className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center text-[#2C4E35] hover:bg-[#FFA800] transition-colors">
-                      👁️
+                    <a
+                      href={item.preview}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 text-center border border-[#2C4E35] text-[#2C4E35] px-3 py-2 md:px-4 md:py-2 rounded-lg text-xs md:text-sm hover:bg-[#2C4E35] hover:text-white transition-colors"
+                    >
+                      Code
                     </a>
                   </div>
                 </div>
               </div>
-
-              {/* Content */}
-              <div className="p-4 md:p-6">
-                <h3 className="text-base md:text-lg font-semibold text-[#2C4E35] group-hover:text-[#FFA800] transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 text-xs md:text-sm mt-2">{item.desc}</p>
-                <div className="flex gap-2 md:gap-3 mt-4">
-                  <a
-                    href={item.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 text-center bg-[#2C4E35] text-white px-3 py-2 md:px-4 md:py-2 rounded-lg text-xs md:text-sm hover:bg-[#FFA800] transition-colors"
-                  >
-                    Demo
-                  </a>
-                  <a
-                    href={item.preview}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 text-center border border-[#2C4E35] text-[#2C4E35] px-3 py-2 md:px-4 md:py-2 rounded-lg text-xs md:text-sm hover:bg-[#2C4E35] hover:text-white transition-colors"
-                  >
-                    Preview
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
-
       {/* Contact Section */}
       <section id="contact" className="py-16 md:py-20 px-4 md:px-8 lg:px-20 bg-white">
         <h2 className="text-2xl md:text-3xl font-bold text-[#2C4E35] mb-3 md:mb-4 text-center">Feel Free To Contact Me</h2>
