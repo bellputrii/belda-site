@@ -6,11 +6,17 @@ import Footer from './components/Footer';
 const LandingPage = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSkillCategory, setActiveSkillCategory] = useState(0); // 0 for languages, 1 for tools
+  const [activeSkillCategory, setActiveSkillCategory] = useState(0);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
 
   useEffect(() => {
     const handleScroll = () => {
-      // Update active section based on scroll position
       const sections = ['home', 'about', 'skills', 'education', 'portfolio', 'contact'];
       const scrollPosition = window.scrollY + 100;
 
@@ -27,7 +33,6 @@ const LandingPage = () => {
         }
       }
 
-      // Update scroll state for navbar
       if (window.scrollY > 10) {
         setIsScrolled(true);
       } else {
@@ -47,6 +52,49 @@ const LandingPage = () => {
         behavior: 'smooth'
       });
     }
+  };
+
+  // Fungsi untuk menangani alert portfolio localhost
+  const handlePortfolioClick = (demoUrl: string, title: string) => {
+    if (demoUrl === 'localhost') {
+      alert(`Website ${title} harus diakses secara localhost, karena keterbatasan akses backend yang sudah tidak aktif sistem hostingnya`);
+      return false;
+    }
+    return true;
+  };
+
+  // Fungsi untuk menangani perubahan form
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  // Fungsi untuk mengirim form ke Gmail
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const { firstName, lastName, email, subject, message } = formData;
+    const fullName = `${firstName} ${lastName}`;
+    
+    // Membuat link mailto dengan data form
+    const mailtoLink = `mailto:beldapramono823@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+      `Nama: ${fullName}\nEmail: ${email}\n\nPesan:\n${message}`
+    )}`;
+    
+    // Membuka client email default pengguna
+    window.location.href = mailtoLink;
+    
+    // Reset form setelah submit
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      subject: '',
+      message: ''
+    });
   };
 
   // Skills data
@@ -138,7 +186,7 @@ const LandingPage = () => {
               {/* Photo */}
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-white">
                 <img
-                  src="/profile-about-me.png" // Ganti dengan path foto Anda
+                  src="/profile-about-me.png"
                   alt="Belda Putri Pramono"
                   className="w-full h-full object-cover hover:scale-140 transition-transform duration-500"
                   onError={(e) => {
@@ -296,8 +344,8 @@ const LandingPage = () => {
               title: "Website Portfolio",
               desc: "Personal landing page with modern and clean design.",
               image: "/belda-site.png",
-              demo: "#",
-              preview: "#",
+              demo: "https://belda-site.vercel.app/",
+              preview: "https://github.com/bellputrii/belda-site.git",
             },
             {
               title: "Pelaut Hebat",
@@ -309,26 +357,25 @@ const LandingPage = () => {
             {
               title: "Growish LabGizi",
               desc: "Website for Growish nutrition laboratory services.",
-              image: "/portfolio/growish.png",
-              demo: "#",
-              preview: "#",
+              image: "LabGizi.png",
+              demo: "localhost",
+              preview: "https://github.com/bellputrii/LabGizi-Growish.git",
             },
             {
               title: "FinTrack",
               desc: "Web-based financial management system for educational institutions.",
-              image: "/portfolio/fintrack.png",
-              demo: "#",
-              preview: "#",
+              image: "FinTrack.png",
+              demo: "localhost",
+              preview: "https://github.com/bellputrii/fe_fintrack_pad2.git",
             },
             {
               title: "Desa Karangtengah",
               desc: "Village information system with visitor features.",
-              image: "/portfolio/karangtengah.png",
+              image: "visitor-asetDesa.png",
               demo: "https://visitor.asetdesakarangtengah.my.id/",
               preview: "#",
             },
           ].map((item, i) => {
-            // Function to generate consistent color based on title
             const stringToColor = (str: string): string => {
               let hash = 0;
               for (let i = 0; i < str.length; i++) {
@@ -373,8 +420,14 @@ const LandingPage = () => {
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                     <div className="flex gap-3 md:gap-4">
                       <a 
-                        href={item.demo} 
-                        target="_blank" 
+                        href={item.demo !== 'localhost' ? item.demo : '#'} 
+                        onClick={(e) => {
+                          if (item.demo === 'localhost') {
+                            e.preventDefault();
+                            handlePortfolioClick(item.demo, item.title);
+                          }
+                        }}
+                        target={item.demo !== 'localhost' ? '_blank' : '_self'} 
                         rel="noopener noreferrer" 
                         className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center text-[#2C4E35] hover:bg-[#FFA800] transition-colors"
                       >
@@ -400,8 +453,14 @@ const LandingPage = () => {
                   <p className="text-gray-600 text-xs md:text-sm mt-2">{item.desc}</p>
                   <div className="flex gap-2 md:gap-3 mt-4">
                     <a
-                      href={item.demo}
-                      target="_blank"
+                      href={item.demo !== 'localhost' ? item.demo : '#'}
+                      onClick={(e) => {
+                        if (item.demo === 'localhost') {
+                          e.preventDefault();
+                          handlePortfolioClick(item.demo, item.title);
+                        }
+                      }}
+                      target={item.demo !== 'localhost' ? '_blank' : '_self'}
                       rel="noopener noreferrer"
                       className="flex-1 text-center bg-[#2C4E35] text-white px-3 py-2 md:px-4 md:py-2 rounded-lg text-xs md:text-sm hover:bg-[#FFA800] transition-colors"
                     >
@@ -422,6 +481,7 @@ const LandingPage = () => {
           })}
         </div>
       </section>
+
       {/* Contact Section */}
       <section id="contact" className="py-16 md:py-20 px-4 md:px-8 lg:px-20 bg-white">
         <h2 className="text-2xl md:text-3xl font-bold text-[#2C4E35] mb-3 md:mb-4 text-center">Feel Free To Contact Me</h2>
@@ -474,32 +534,78 @@ const LandingPage = () => {
         <p className="text-gray-500 mb-6 md:mb-8 text-center text-base md:text-lg">Or send me a message directly</p>
 
         {/* Contact Form */}
-        <form className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-left bg-gray-50 p-4 md:p-6 lg:p-8 rounded-xl md:rounded-2xl shadow-md">
+        <form 
+          onSubmit={handleSubmit}
+          className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-left bg-gray-50 p-4 md:p-6 lg:p-8 rounded-xl md:rounded-2xl shadow-md"
+        >
           <div className="md:col-span-2 text-center mb-3 md:mb-4">
             <h3 className="text-lg md:text-xl font-semibold text-[#2C4E35]">Send Me a Message</h3>
           </div>
           <div>
             <label className="block text-xs md:text-sm font-medium mb-1 md:mb-2">First Name *</label>
-            <input type="text" placeholder="Your First Name" className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base" />
+            <input 
+              type="text" 
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleInputChange}
+              placeholder="Your First Name" 
+              className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base" 
+              required
+            />
           </div>
           <div>
             <label className="block text-xs md:text-sm font-medium mb-1 md:mb-2">Last Name *</label>
-            <input type="text" placeholder="Your Last Name" className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base" />
+            <input 
+              type="text" 
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleInputChange}
+              placeholder="Your Last Name" 
+              className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base" 
+              required
+            />
           </div>
           <div>
             <label className="block text-xs md:text-sm font-medium mb-1 md:mb-2">Email *</label>
-            <input type="email" placeholder="Your Email" className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base" />
+            <input 
+              type="email" 
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              placeholder="Your Email" 
+              className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base" 
+              required
+            />
           </div>
           <div>
             <label className="block text-xs md:text-sm font-medium mb-1 md:mb-2">Subject *</label>
-            <input type="text" placeholder="Your Subject" className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base" />
+            <input 
+              type="text" 
+              name="subject"
+              value={formData.subject}
+              onChange={handleInputChange}
+              placeholder="Your Subject" 
+              className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base" 
+              required
+            />
           </div>
           <div className="md:col-span-2">
             <label className="block text-xs md:text-sm font-medium mb-1 md:mb-2">Message *</label>
-            <textarea rows={3} placeholder="Your Message" className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base"></textarea>
+            <textarea 
+              rows={3} 
+              name="message"
+              value={formData.message}
+              onChange={handleInputChange}
+              placeholder="Your Message" 
+              className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base"
+              required
+            ></textarea>
           </div>
           <div className="md:col-span-2 text-center">
-            <button className="bg-gradient-to-r from-[#2C4E35] to-[#FFA800] text-white px-6 py-2.5 md:px-8 md:py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg w-full md:w-auto">
+            <button 
+              type="submit"
+              className="bg-gradient-to-r from-[#2C4E35] to-[#FFA800] text-white px-6 py-2.5 md:px-8 md:py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg w-full md:w-auto"
+            >
               Submit Message
             </button>
           </div>
