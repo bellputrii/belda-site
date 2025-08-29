@@ -1,44 +1,42 @@
-🌐 Personal Portfolio Website
+**🌐 Personal Portfolio Website**
+📌 Description
+This portfolio website is designed to showcase my profile, experience, and projects as a Web Developer.
+Built with Next.js, Tailwind CSS, and React, it emphasizes performance, responsive design, and user-friendly interaction.
 
-<!-- Opsional: tambahkan screenshot jika ada -->
+✨ Features
+Responsive Design (mobile-first & desktop-friendly)
 
-📌 Deskripsi
+Dark & Light Mode (optional)
 
-Website portfolio ini dibuat untuk menampilkan profil, pengalaman, dan proyek saya sebagai Web Developer. Dibangun menggunakan Next.js, Tailwind CSS, dan React dengan fokus pada performa, desain responsif, dan pengalaman pengguna yang baik.
+Landing Page with a hero section
 
-✨ Fitur Utama
+About Page for personal information
 
-✅ Responsive Design (mobile-first & desktop-friendly)
+Skills Section highlighting technologies mastered
 
-✅ Dark & Light Mode (opsional)
+Projects Section to showcase portfolio work
 
-✅ Halaman Utama (Landing Page) dengan hero section
+Contact Page with email integration
 
-✅ About Page untuk informasi personal
+SEO Optimized and fast loading performance
 
-✅ Skills Section menampilkan teknologi yang dikuasai
+🛠️ Tech Stack
+Next.js 14 – React framework for SSR & SSG
 
-✅ Projects Section untuk showcase portofolio
+React – UI library for building interactive components
 
-✅ Contact Page dengan form yang dapat dikirimkan ke email
+Tailwind CSS – Utility-first CSS framework for styling
 
-✅ SEO Friendly dan fast loading
+TypeScript (optional) – Type-safe and maintainable code
 
-🛠️ Teknologi yang Digunakan
+shadcn/ui – Pre-built, customizable UI components
 
-Next.js 14 – Framework React untuk SSR & SSG
-
-React – Library untuk UI interaktif
-
-Tailwind CSS – Styling yang efisien dan konsisten
-
-TypeScript (opsional) – Supaya lebih aman dan maintainable
-
-shadcn/ui – Komponen UI siap pakai
-
-📂 Struktur Proyek
-project-name/
-├── public/            # Assets (gambar, icon, dll)
+📂 Project Structure
+csharp
+Copy
+Edit
+portfolio-website/
+├── public/            # Assets (images, icons, etc.)
 ├── components/        # Reusable UI components
 │   ├── navbar/
 │   ├── footer/
@@ -52,39 +50,40 @@ project-name/
 ├── styles/            # Global styles
 ├── package.json
 └── README.md
+🚀 Getting Started
+Make sure Node.js is installed on your machine.
 
-🚀 Cara Menjalankan Proyek
-
-Pastikan Node.js sudah terinstall di komputer kamu.
-
-# Clone repository
+bash
+Copy
+Edit
+# Clone the repository
 git clone https://github.com/username/portfolio-website.git
 
-# Masuk ke folder proyek
+# Navigate to the project folder
 cd portfolio-website
 
 # Install dependencies
 npm install
 
-# Jalankan project di mode development
+# Run the project in development mode
 npm run dev
 
-# Buka di browser
+# Open in browser
 http://localhost:3000
-
-📦 Build untuk Production
+📦 Production Build
+bash
+Copy
+Edit
 npm run build
 npm start
+🔍 Live Demo
+You can access the hosted version here:
+👉 https://belda-site.vercel.app/
 
-🔍 Preview
+🤝 Contribution
+Contributions are welcome!
+Feel free to fork the repository, create a new branch, and submit a pull request.
 
-Jika kamu ingin melihat live demo, kunjungi:
-🔗 Live Demo
-
-🤝 Kontribusi
-
-Jika kamu ingin berkontribusi, silakan fork repo ini dan ajukan pull request.
-
-📄 Lisensi
-
-Proyek ini menggunakan lisensi MIT. Silakan gunakan sesuai kebutuhan.
+📄 License
+This project is licensed under the MIT License.
+You are free to use, modify, and distribute it as needed.
