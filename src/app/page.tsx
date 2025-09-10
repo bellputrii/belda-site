@@ -223,12 +223,23 @@ const LandingPage = () => {
               <span className="bg-[#FFA800] text-white px-3 py-1 rounded-full text-sm">UI/UX</span>
             </div>
             
-            <button className="bg-gradient-to-r from-[#2C4E35] to-[#3a6b47] text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 group">
-              Download CV
-              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-              </svg>
-            </button>
+            <button 
+                onClick={() => {
+                  // Membuat elemen anchor tersembunyi untuk download
+                  const link = document.createElement('a');
+                  link.href = '/CV_Belda_Putri_Pramono.pdf';
+                  link.download = 'CV_Belda_Putri_Pramono.pdf';
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }}
+                className="bg-gradient-to-r from-[#2C4E35] to-[#3a6b47] text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 group"
+              >
+                Download CV
+                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+              </button>
           </div>
         </div>
       </section>
@@ -342,38 +353,51 @@ const LandingPage = () => {
           {[
             {
               title: "Website Portfolio",
-              desc: "Personal landing page with modern and clean design.",
+              desc: "A personal landing page with a modern and clean design, built using Next.js and deployed on Vercel.",
               image: "/belda-site.png",
               demo: "https://belda-site.vercel.app/",
               preview: "https://github.com/bellputrii/belda-site.git",
+              techStack: ["Next.js", "Tailwind", "Vercel"]
             },
             {
               title: "Pelaut Hebat",
-              desc: "Education platform for sailors with interactive features.",
+              desc: "An innovative maritime safety platform with features like AI-powered sea condition recommendations, community voyage reports, and 24-hour weather forecasts.",
               image: "/pelaut-hebat.png",
               demo: "https://pelauthebat.vercel.app/",
               preview: "https://github.com/bellputrii/fe_pelautHebat.git",
+              techStack: ["Next.js", "Tailwind", "AI", "Vercel"]
             },
             {
               title: "Growish LabGizi",
-              desc: "Website for Growish nutrition laboratory services.",
+              desc: "A recipe and nutrition management system designed for nutrition researchers and professionals.",
               image: "LabGizi.png",
               demo: "localhost",
               preview: "https://github.com/bellputrii/LabGizi-Growish.git",
+              techStack: ["Next.js", "Tailwind", "JavaScript"]
             },
             {
               title: "FinTrack",
-              desc: "Web-based financial management system for educational institutions.",
+              desc: "A web-based financial management system developed for SMA STEAM Yogyakarta, featuring billing, expense tracking, and reporting dashboards.",
               image: "FinTrack.png",
               demo: "localhost",
               preview: "https://github.com/bellputrii/fe_fintrack_pad2.git",
+              techStack: ["Next.js", "Tailwind", "JavaScript"]
             },
             {
-              title: "Desa Karangtengah",
-              desc: "Village information system with visitor features.",
+              title: "SIMA Desa Karangtengah",
+              desc: "A village asset management system with visitor and admin interfaces, providing full CRUD functionality.",
               image: "visitor-asetDesa.png",
               demo: "https://visitor.asetdesakarangtengah.my.id/",
               preview: "#",
+              techStack: ["CodeIgniter", "MySQL", "JavaScript", "cPanel"]
+            },
+            {
+              title: "Wayang Kita",
+              desc: "A cultural preservation website that showcases Wayang Golek, Wayang Kulit, and other traditional puppetry collections.",
+              image: "wayang-kita.jpg",
+              demo: "https://wayangkita.sv.ugm.ac.id/",
+              preview: "#",
+              techStack: ["WordPress", "PHP", "cPanel"]
             },
           ].map((item, i) => {
             const stringToColor = (str: string): string => {
@@ -394,10 +418,10 @@ const LandingPage = () => {
             return (
               <div
                 key={i}
-                className="group bg-white rounded-xl md:rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
+                className="group bg-white rounded-xl md:rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full"
               >
                 {/* Thumbnail with image and fallback */}
-                <div className="relative h-40 md:h-48 w-full overflow-hidden">
+                <div className="relative h-48 w-full overflow-hidden flex-shrink-0">
                   {/* Try to load image first */}
                   <img
                     src={item.image}
@@ -446,12 +470,28 @@ const LandingPage = () => {
                 </div>
 
                 {/* Content */}
-                <div className="p-4 md:p-6">
-                  <h3 className="text-base md:text-lg font-semibold text-[#2C4E35] group-hover:text-[#FFA800] transition-colors">
+                <div className="p-4 md:p-6 flex flex-col flex-grow">
+                  <h3 className="text-base md:text-lg font-semibold text-[#2C4E35] group-hover:text-[#FFA800] transition-colors mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 text-xs md:text-sm mt-2">{item.desc}</p>
-                  <div className="flex gap-2 md:gap-3 mt-4">
+                  <p className="text-gray-600 text-xs md:text-sm mb-4 flex-grow">{item.desc}</p>
+                  
+                  {/* Tech Stack Container */}
+                  <div className="mb-4">
+                    <p className="text-xs text-gray-500 mb-2">Tech Stack:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {item.techStack.map((tech, index) => (
+                        <span 
+                          key={index}
+                          className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md border border-gray-200"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-2 md:gap-3 mt-auto">
                     <a
                       href={item.demo !== 'localhost' ? item.demo : '#'}
                       onClick={(e) => {
@@ -481,6 +521,8 @@ const LandingPage = () => {
           })}
         </div>
       </section>
+
+
 
       {/* Contact Section */}
       <section id="contact" className="py-16 md:py-20 px-4 md:px-8 lg:px-20 bg-white">

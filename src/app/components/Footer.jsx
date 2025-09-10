@@ -83,7 +83,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-3 text-xs md:text-sm text-center">
           <p>© 2025 – Created by Belda Putri Pramono. All rights reserved</p>
           <div className="flex items-center gap-2 text-[#FFA800]">
-            <span className="opacity-75">Website Version: 1.0.0</span>
+            <span className="opacity-75">Website Version: 1.0.1</span>
           </div>
         </div>
       </div>
