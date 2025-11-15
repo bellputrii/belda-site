@@ -7,6 +7,7 @@ const LandingPage = () => {
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSkillCategory, setActiveSkillCategory] = useState(0);
+  const [showAllPortfolio, setShowAllPortfolio] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -99,30 +100,101 @@ const LandingPage = () => {
 
   // Skills data
   const programmingSkills = [
-    { name: 'React', color: 'blue', icon: '⚛️' },
-    { name: 'Next.js', color: 'gray', icon: '🔄' },
-    { name: 'HTML', color: 'orange', icon: '🌐' },
-    { name: 'CSS', color: 'blue', icon: '🎨' },
-    { name: 'Tailwind', color: 'cyan', icon: '💨' },
-    { name: 'JavaScript', color: 'yellow', icon: '📜' },
-    { name: 'CodeIgniter', color: 'red', icon: '🔥' },
-    { name: 'WordPress', color: 'blue', icon: '📝' },
-    { name: 'Laravel', color: 'red', icon: '🪄' },
-    { name: 'REST API', color: 'green', icon: '🔌' },
+    { name: 'React', color: 'bg-blue-100', icon: '⚛️' },
+    { name: 'Next.js', color: 'bg-gray-100', icon: '🔄' },
+    { name: 'HTML', color: 'bg-orange-100', icon: '🌐' },
+    { name: 'CSS', color: 'bg-blue-100', icon: '🎨' },
+    { name: 'Tailwind', color: 'bg-cyan-100', icon: '💨' },
+    { name: 'JavaScript', color: 'bg-yellow-100', icon: '📜' },
+    { name: 'CodeIgniter', color: 'bg-red-100', icon: '🔥' },
+    { name: 'WordPress', color: 'bg-blue-100', icon: '📝' },
+    { name: 'Laravel', color: 'bg-red-100', icon: '🪄' },
+    { name: 'REST API', color: 'bg-green-100', icon: '🔌' },
   ];
 
   const toolsSkills = [
-    { name: 'VS Code', color: 'blue', icon: '💻' },
-    { name: 'Postman', color: 'orange', icon: '📮' },
-    { name: 'Figma', color: 'purple', icon: '🎨' },
-    { name: 'Canva', color: 'blue', icon: '🖼️' },
-    { name: 'GitHub', color: 'gray', icon: '🐙' },
-    { name: 'GitBash', color: 'black', icon: '⌨️' },
-    { name: 'Vercel', color: 'black', icon: '🚀' },
+    { name: 'VS Code', color: 'bg-blue-100', icon: '💻' },
+    { name: 'Postman', color: 'bg-orange-100', icon: '📮' },
+    { name: 'Figma', color: 'bg-purple-100', icon: '🎨' },
+    { name: 'Canva', color: 'bg-blue-100', icon: '🖼️' },
+    { name: 'GitHub', color: 'bg-gray-100', icon: '🐙' },
+    { name: 'GitBash', color: 'bg-black-100', icon: '⌨️' },
+    { name: 'Vercel', color: 'bg-black-100', icon: '🚀' },
   ];
 
+  // Portfolio data
+  const portfolioData = [
+    {
+      title: "Website Portfolio",
+      desc: "A personal landing page with a modern and clean design, built using Next.js and deployed on Vercel.",
+      image: "/belda-site.png",
+      demo: "https://belda-site.vercel.app/",
+      preview: "https://github.com/bellputrii/belda-site.git",
+      techStack: ["Next.js", "Tailwind", "Vercel"]
+    },
+    {
+      title: "Pelaut Hebat",
+      desc: "An innovative maritime safety platform with features like AI-powered sea condition recommendations, community voyage reports, and 24-hour weather forecasts.",
+      image: "/pelaut-hebat.png",
+      demo: "https://pelauthebat.vercel.app/",
+      preview: "https://github.com/bellputrii/fe_pelautHebat.git",
+      techStack: ["Next.js", "Tailwind", "AI", "Vercel"]
+    },
+    {
+      title: "Growish LabGizi",
+      desc: "A recipe and nutrition management system designed for nutrition researchers and professionals.",
+      image: "LabGizi.png",
+      demo: "localhost",
+      preview: "https://github.com/bellputrii/LabGizi-Growish.git",
+      techStack: ["Next.js", "Tailwind"]
+    },
+    {
+      title: "FinTrack",
+      desc: "A web-based financial management system developed for SMA STEAM Yogyakarta, featuring billing, expense tracking, and reporting dashboards.",
+      image: "FinTrack.png",
+      demo: "localhost",
+      preview: "https://github.com/bellputrii/fe_fintrack_pad2.git",
+      techStack: ["Next.js", "Tailwind"]
+    },
+    {
+      title: "SIMA Desa Karangtengah",
+      desc: "A village asset management system with visitor and admin interfaces, providing full CRUD functionality.",
+      image: "visitor-asetDesa.png",
+      demo: "https://visitor.asetdesakarangtengah.my.id/",
+      preview: "#",
+      techStack: ["CodeIgniter", "MySQL", "JavaScript", "cPanel"]
+    },
+    {
+      title: "Wayang Kita",
+      desc: "A cultural preservation website that showcases Wayang Golek, Wayang Kulit, and other traditional puppetry collections.",
+      image: "wayang-kita.jpg",
+      demo: "https://wayangkita.sv.ugm.ac.id/",
+      preview: "#",
+      techStack: ["WordPress", "PHP", "cPanel"]
+    },
+    {
+      title: "Ambil Prestasi",
+      desc: "A comprehensive e-learning platform with three integrated systems (Student, Teacher, Admin), built using Next.js 14 with App Router, TypeScript, and Tailwind CSS.",
+      image: "ambil-prestasi.jpg",
+      demo: "https://ambilprestasi.vercel.app/",
+      preview: "https://github.com/bellputrii/fe-ambil-prestasi.git",
+      techStack: ["Next.js", "Tailwind", "Vercel", "TypeScript"]
+    },
+    {
+      title: "Elok Printing",
+      desc: "A company profile and e-commerce website for a digital printing service, built with WordPress to provide online ordering and a wide range of printing solutions.",
+      image: "elok-printing.jpg",
+      demo: "https://www.elokprinting.com/",
+      preview: "#",
+      techStack: ["WordPress", "PHP", "cPanel"]
+    },
+  ];
+
+  // Tampilkan 6 item pertama, lalu semua jika showAllPortfolio true
+  const displayedPortfolio = showAllPortfolio ? portfolioData : portfolioData.slice(0, 6);
+
   return (
-    <div className="font-sans text-gray-800 bg-gray-50">
+    <div className="font-sans text-gray-900 bg-gray-50">
       {/* Header */}
       <Navbar />
 
@@ -137,13 +209,13 @@ const LandingPage = () => {
 
         {/* Text */}
         <div className="md:w-1/2 max-w-xl z-10 order-2 md:order-1">
-          <p className="text-gray-600 mb-3 text-base md:text-lg">Hello There! 👋</p>
+          <p className="text-gray-700 mb-3 text-base md:text-lg">Hello There! 👋</p>
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-snug mb-4 md:mb-6">
             I'm <span className="text-[#FFA800]">Belda Putri Pramono,</span>
             <br />
             Frontend Developer
           </h1>
-          <p className="text-gray-700 text-sm md:text-base lg:text-lg mb-6 md:mb-8">
+          <p className="text-gray-800 text-sm md:text-base lg:text-lg mb-6 md:mb-8">
             I create modern and responsive websites, specializing in turning designs
             into interactive, user-friendly experiences as a frontend developer.
           </p>
@@ -176,19 +248,19 @@ const LandingPage = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6 md:px-20 bg-white">
-        <h2 className="text-3xl font-bold text-[#2C4E35] mb-8 text-center">About Me</h2>
-        <div className="flex flex-col md:flex-row justify-center items-center gap-10  duration-300">
+      <section id="about" className="py-16 md:py-20 px-4 md:px-8 lg:px-20 bg-white">
+        <h2 className="text-2xl md:text-3xl font-bold text-[#2C4E35] mb-6 md:mb-8 text-center">About Me</h2>
+        <div className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-10 duration-300">
           {/* Photo Container */}
           <div className="relative flex-shrink-0">
             {/* Frame */}
-            <div className="w-48 h-48 md:w-56 md:h-56 bg-gradient-to-br from-[#FFA800] to-orange-300 rounded-full p-2 shadow-xl">
+            <div className="w-48 h-48 md:w-56 md:h-56 bg-[#FFA800] rounded-full p-2 shadow-xl">
               {/* Photo */}
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-white">
                 <img
                   src="/profile-about-me.png"
                   alt="Belda Putri Pramono"
-                  className="w-full h-full object-cover hover:scale-140 transition-transform duration-500"
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
                     target.onerror = null;
@@ -209,14 +281,14 @@ const LandingPage = () => {
           </div>
           
           {/* Text Content */}
-          <div className="md:w-1/2 text-left">
-            <h3 className="text-2xl font-semibold mb-4 text-[#2C4E35]">Who is Belda Putri Pramono?</h3>
-            <p className="text-gray-700 mb-6 leading-relaxed">
+          <div className="md:w-1/2 text-center md:text-left">
+            <h3 className="text-xl md:text-2xl font-semibold mb-4 text-[#2C4E35]">Who is Belda Putri Pramono?</h3>
+            <p className="text-gray-800 mb-6 leading-relaxed">
               A passionate Frontend Developer with hands-on experience in building responsive, modern, and user-friendly web interfaces across various projects and industries. I love creating digital experiences that are both beautiful and functional.
             </p>
             
             {/* Skills Highlights */}
-            <div className="flex flex-wrap gap-2 mb-6">
+            <div className="flex flex-wrap gap-2 mb-6 justify-center md:justify-start">
               <span className="bg-[#2C4E35] text-white px-3 py-1 rounded-full text-sm">React</span>
               <span className="bg-[#FFA800] text-white px-3 py-1 rounded-full text-sm">Next.js</span>
               <span className="bg-[#2C4E35] text-white px-3 py-1 rounded-full text-sm">Responsive Design</span>
@@ -233,7 +305,7 @@ const LandingPage = () => {
                   link.click();
                   document.body.removeChild(link);
                 }}
-                className="bg-gradient-to-r from-[#2C4E35] to-[#3a6b47] text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 group"
+                className="bg-[#2C4E35] text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 group mx-auto md:mx-0 hover:bg-[#3a6b47]"
               >
                 Download CV
                 <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -250,18 +322,18 @@ const LandingPage = () => {
         
         <div className="max-w-3xl mx-auto relative">
           {/* Timeline line */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-[#FFA800] transform -translate-x-1/2"></div>
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-[#FFA800] transform md:-translate-x-1/2"></div>
           
           {/* Item 1 */}
           <div className="flex flex-col md:flex-row mb-12 md:mb-16 relative">
             <div className="md:w-1/2 md:pr-6 md:text-right mb-4 md:mb-0">
               <h3 className="text-lg md:text-xl font-semibold text-[#2C4E35]">SMA NEGERI 1 WIDODAREN</h3>
-              <p className="text-gray-600 text-sm md:text-base">2020 - 2023</p>
+              <p className="text-gray-700 text-sm md:text-base">2020 - 2023</p>
             </div>
             <div className="absolute left-4 md:left-1/2 -ml-3 md:-ml-4 top-2 w-5 h-5 md:w-6 md:h-6 bg-[#FFA800] rounded-full border-4 border-white shadow-lg"></div>
             <div className="md:w-1/2 md:pl-6 md:mt-0 mt-4">
               <div className="bg-white p-4 md:p-6 rounded-xl shadow-md">
-                <p className="text-gray-700 text-sm md:text-base">Completed high school education with focus on science and technology.</p>
+                <p className="text-gray-800 text-sm md:text-base">Completed high school education with focus on science and technology.</p>
               </div>
             </div>
           </div>
@@ -272,12 +344,12 @@ const LandingPage = () => {
               <h3 className="text-lg md:text-xl font-semibold text-[#2C4E35]">
                 D4 Software Engineering
               </h3>
-              <p className="text-gray-600 text-sm md:text-base">2023 - Now</p>
+              <p className="text-gray-700 text-sm md:text-base">2023 - Now</p>
             </div>
             <div className="absolute left-4 md:left-1/2 -ml-3 md:-ml-4 top-2 w-5 h-5 md:w-6 md:h-6 bg-[#FFA800] rounded-full border-4 border-white shadow-lg"></div>
             <div className="md:w-1/2 md:pl-6 md:mt-0 mt-4">
               <div className="bg-white p-4 md:p-6 rounded-xl shadow-md">
-                <p className="text-gray-700 text-sm md:text-base">Sekolah Vokasi, Universitas Gadjah Mada. Currently studying software engineering with focus on frontend development.</p>
+                <p className="text-gray-800 text-sm md:text-base">Sekolah Vokasi, Universitas Gadjah Mada. Currently studying software engineering with focus on frontend development.</p>
               </div>
             </div>
           </div>
@@ -287,7 +359,7 @@ const LandingPage = () => {
       {/* Skills Section */}
       <section id="skills" className="py-16 md:py-20 px-4 md:px-8 lg:px-20 bg-white">
         <h2 className="text-2xl md:text-3xl font-bold text-[#2C4E35] mb-4 md:mb-6 text-center">My Skills</h2>
-        <p className="text-gray-600 mb-8 md:mb-12 text-center max-w-2xl mx-auto text-sm md:text-base">
+        <p className="text-gray-700 mb-8 md:mb-12 text-center max-w-2xl mx-auto text-sm md:text-base">
           Here are the technologies and tools I work with to create amazing digital experiences.
         </p>
         
@@ -296,13 +368,13 @@ const LandingPage = () => {
           <div className="bg-gray-100 rounded-full p-1 flex">
             <button
               onClick={() => setActiveSkillCategory(0)}
-              className={`px-4 py-2 rounded-full text-sm md:text-base transition-all duration-300 ${activeSkillCategory === 0 ? 'bg-[#2C4E35] text-white' : 'text-gray-600 hover:text-[#2C4E35]'}`}
+              className={`px-4 py-2 rounded-full text-sm md:text-base transition-all duration-300 ${activeSkillCategory === 0 ? 'bg-[#2C4E35] text-white' : 'text-gray-700 hover:text-[#2C4E35]'}`}
             >
               Programming
             </button>
             <button
               onClick={() => setActiveSkillCategory(1)}
-              className={`px-4 py-2 rounded-full text-sm md:text-base transition-all duration-300 ${activeSkillCategory === 1 ? 'bg-[#2C4E35] text-white' : 'text-gray-600 hover:text-[#2C4E35]'}`}
+              className={`px-4 py-2 rounded-full text-sm md:text-base transition-all duration-300 ${activeSkillCategory === 1 ? 'bg-[#2C4E35] text-white' : 'text-gray-700 hover:text-[#2C4E35]'}`}
             >
               Tools
             </button>
@@ -317,10 +389,10 @@ const LandingPage = () => {
                 key={index}
                 className="group flex flex-col items-center p-4 md:p-6 bg-white rounded-xl md:rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"
               >
-                <div className={`w-12 h-12 md:w-16 md:h-16 mb-3 md:mb-4 bg-${skill.color}-100 rounded-xl flex items-center justify-center text-xl md:text-2xl`}>
+                <div className={`w-12 h-12 md:w-16 md:h-16 mb-3 md:mb-4 ${skill.color} rounded-xl flex items-center justify-center text-xl md:text-2xl`}>
                   {skill.icon}
                 </div>
-                <span className="text-xs md:text-sm font-medium text-gray-800">{skill.name}</span>
+                <span className="text-xs md:text-sm font-medium text-gray-900">{skill.name}</span>
               </div>
             ))}
           </div>
@@ -332,10 +404,10 @@ const LandingPage = () => {
                 key={index}
                 className="group flex flex-col items-center p-4 md:p-6 bg-white rounded-xl md:rounded-2xl shadow-md hover:shadow-xl transition-all duration-300"
               >
-                <div className={`w-12 h-12 md:w-16 md:h-16 mb-3 md:mb-4 bg-${skill.color}-100 rounded-xl flex items-center justify-center text-xl md:text-2xl`}>
+                <div className={`w-12 h-12 md:w-16 md:h-16 mb-3 md:mb-4 ${skill.color} rounded-xl flex items-center justify-center text-xl md:text-2xl`}>
                   {skill.icon}
                 </div>
-                <span className="text-xs md:text-sm font-medium text-gray-800">{skill.name}</span>
+                <span className="text-xs md:text-sm font-medium text-gray-900">{skill.name}</span>
               </div>
             ))}
           </div>
@@ -345,61 +417,12 @@ const LandingPage = () => {
       {/* Portfolio Section */}
       <section id="portfolio" className="py-16 md:py-20 px-4 md:px-8 lg:px-20 bg-gray-50">
         <h2 className="text-2xl md:text-3xl font-bold text-[#2C4E35] mb-3 md:mb-4 text-center">Portfolio</h2>
-        <p className="text-gray-600 mb-8 md:mb-12 text-center max-w-2xl mx-auto text-sm md:text-base">
+        <p className="text-gray-700 mb-8 md:mb-12 text-center max-w-2xl mx-auto text-sm md:text-base">
           Here are some of my recent projects that showcase my skills and experience.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {[
-            {
-              title: "Website Portfolio",
-              desc: "A personal landing page with a modern and clean design, built using Next.js and deployed on Vercel.",
-              image: "/belda-site.png",
-              demo: "https://belda-site.vercel.app/",
-              preview: "https://github.com/bellputrii/belda-site.git",
-              techStack: ["Next.js", "Tailwind", "Vercel"]
-            },
-            {
-              title: "Pelaut Hebat",
-              desc: "An innovative maritime safety platform with features like AI-powered sea condition recommendations, community voyage reports, and 24-hour weather forecasts.",
-              image: "/pelaut-hebat.png",
-              demo: "https://pelauthebat.vercel.app/",
-              preview: "https://github.com/bellputrii/fe_pelautHebat.git",
-              techStack: ["Next.js", "Tailwind", "AI", "Vercel"]
-            },
-            {
-              title: "Growish LabGizi",
-              desc: "A recipe and nutrition management system designed for nutrition researchers and professionals.",
-              image: "LabGizi.png",
-              demo: "localhost",
-              preview: "https://github.com/bellputrii/LabGizi-Growish.git",
-              techStack: ["Next.js", "Tailwind", "JavaScript"]
-            },
-            {
-              title: "FinTrack",
-              desc: "A web-based financial management system developed for SMA STEAM Yogyakarta, featuring billing, expense tracking, and reporting dashboards.",
-              image: "FinTrack.png",
-              demo: "localhost",
-              preview: "https://github.com/bellputrii/fe_fintrack_pad2.git",
-              techStack: ["Next.js", "Tailwind", "JavaScript"]
-            },
-            {
-              title: "SIMA Desa Karangtengah",
-              desc: "A village asset management system with visitor and admin interfaces, providing full CRUD functionality.",
-              image: "visitor-asetDesa.png",
-              demo: "https://visitor.asetdesakarangtengah.my.id/",
-              preview: "#",
-              techStack: ["CodeIgniter", "MySQL", "JavaScript", "cPanel"]
-            },
-            {
-              title: "Wayang Kita",
-              desc: "A cultural preservation website that showcases Wayang Golek, Wayang Kulit, and other traditional puppetry collections.",
-              image: "wayang-kita.jpg",
-              demo: "https://wayangkita.sv.ugm.ac.id/",
-              preview: "#",
-              techStack: ["WordPress", "PHP", "cPanel"]
-            },
-          ].map((item, i) => {
+          {displayedPortfolio.map((item, i) => {
             const stringToColor = (str: string): string => {
               let hash = 0;
               for (let i = 0; i < str.length; i++) {
@@ -433,9 +456,9 @@ const LandingPage = () => {
                     }}
                   />
                   
-                  {/* Fallback with gradient background and first letter */}
+                  {/* Fallback with solid background and first letter */}
                   <div 
-                    className="w-full h-full bg-gradient-to-br from-[#2C4E35] to-[#FFA800] flex items-center justify-center text-white text-4xl font-bold"
+                    className="w-full h-full bg-[#2C4E35] flex items-center justify-center text-white text-4xl font-bold"
                   >
                     {item.title.charAt(0)}
                   </div>
@@ -453,7 +476,7 @@ const LandingPage = () => {
                         }}
                         target={item.demo !== 'localhost' ? '_blank' : '_self'} 
                         rel="noopener noreferrer" 
-                        className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center text-[#2C4E35] hover:bg-[#FFA800] transition-colors"
+                        className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center text-[#2C4E35] hover:bg-[#FFA800] hover:text-white transition-colors"
                       >
                         ↗
                       </a>
@@ -461,7 +484,7 @@ const LandingPage = () => {
                         href={item.preview} 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center text-[#2C4E35] hover:bg-[#FFA800] transition-colors"
+                        className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center text-[#2C4E35] hover:bg-[#FFA800] hover:text-white transition-colors"
                       >
                         👁️
                       </a>
@@ -474,16 +497,16 @@ const LandingPage = () => {
                   <h3 className="text-base md:text-lg font-semibold text-[#2C4E35] group-hover:text-[#FFA800] transition-colors mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 text-xs md:text-sm mb-4 flex-grow">{item.desc}</p>
+                  <p className="text-gray-700 text-xs md:text-sm mb-4 flex-grow">{item.desc}</p>
                   
                   {/* Tech Stack Container */}
                   <div className="mb-4">
-                    <p className="text-xs text-gray-500 mb-2">Tech Stack:</p>
+                    <p className="text-xs text-gray-600 mb-2">Tech Stack:</p>
                     <div className="flex flex-wrap gap-2">
                       {item.techStack.map((tech, index) => (
                         <span 
                           key={index}
-                          className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-md border border-gray-200"
+                          className="px-2 py-1 bg-gray-100 text-gray-800 text-xs rounded-md border border-gray-200"
                         >
                           {tech}
                         </span>
@@ -520,14 +543,24 @@ const LandingPage = () => {
             );
           })}
         </div>
+
+        {/* Show More/Less Button */}
+        {portfolioData.length > 6 && (
+          <div className="text-center mt-8 md:mt-12">
+            <button
+              onClick={() => setShowAllPortfolio(!showAllPortfolio)}
+              className="bg-[#2C4E35] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#3a6b47] transition-colors duration-300 shadow-md hover:shadow-lg"
+            >
+              {showAllPortfolio ? 'Show Less' : 'Show More'}
+            </button>
+          </div>
+        )}
       </section>
-
-
 
       {/* Contact Section */}
       <section id="contact" className="py-16 md:py-20 px-4 md:px-8 lg:px-20 bg-white">
         <h2 className="text-2xl md:text-3xl font-bold text-[#2C4E35] mb-3 md:mb-4 text-center">Feel Free To Contact Me</h2>
-        <p className="text-gray-600 mb-8 md:mb-12 max-w-2xl mx-auto text-center text-sm md:text-base">
+        <p className="text-gray-700 mb-8 md:mb-12 max-w-2xl mx-auto text-center text-sm md:text-base">
           I am always open to discussing product design, collaborating work, or partnerships.
         </p>
 
@@ -538,10 +571,10 @@ const LandingPage = () => {
               <div className="w-10 h-10 md:w-12 md:h-12 bg-green-100 rounded-xl flex items-center justify-center text-xl md:text-2xl">
                 💬
               </div>
-              <h3 className="font-semibold text-base md:text-lg">WhatsApp</h3>
+              <h3 className="font-semibold text-base md:text-lg text-gray-900">WhatsApp</h3>
             </div>
-            <p className="text-gray-700 mb-2 text-sm md:text-base">+62 89673384911</p>
-            <a href="https://wa.me/6289673384911" className="text-[#FFA800] font-semibold hover:underline flex items-center text-sm md:text-base">
+            <p className="text-gray-800 mb-2 text-sm md:text-base">+62 87892192777</p>
+            <a href="https://wa.me/6287892192777" className="text-[#FFA800] font-semibold hover:underline flex items-center text-sm md:text-base">
               Send Message <span className="ml-1">→</span>
             </a>
           </div>
@@ -551,9 +584,9 @@ const LandingPage = () => {
               <div className="w-10 h-10 md:w-12 md:h-12 bg-red-100 rounded-xl flex items-center justify-center text-xl md:text-2xl">
                 ✉️
               </div>
-              <h3 className="font-semibold text-base md:text-lg">Gmail</h3>
+              <h3 className="font-semibold text-base md:text-lg text-gray-900">Gmail</h3>
             </div>
-            <p className="text-gray-700 mb-2 text-sm md:text-base">beldapramono823@gmail.com</p>
+            <p className="text-gray-800 mb-2 text-sm md:text-base">beldapramono823@gmail.com</p>
             <a href="mailto:beldapramono823@gmail.com" className="text-[#FFA800] font-semibold hover:underline flex items-center text-sm md:text-base">
               Send Email <span className="ml-1">→</span>
             </a>
@@ -564,16 +597,16 @@ const LandingPage = () => {
               <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-100 rounded-xl flex items-center justify-center text-xl md:text-2xl">
                 📨
               </div>
-              <h3 className="font-semibold text-base md:text-lg">Telegram</h3>
+              <h3 className="font-semibold text-base md:text-lg text-gray-900">Telegram</h3>
             </div>
-            <p className="text-gray-700 mb-2 text-sm md:text-base">+62 89673384911</p>
-            <a href="https://t.me/6289673384911" className="text-[#FFA800] font-semibold hover:underline flex items-center text-sm md:text-base">
+            <p className="text-gray-800 mb-2 text-sm md:text-base">+62 87892192777</p>
+            <a href="https://t.me/6287892192777" className="text-[#FFA800] font-semibold hover:underline flex items-center text-sm md:text-base">
               Send Message <span className="ml-1">→</span>
             </a>
           </div>
         </div>
 
-        <p className="text-gray-500 mb-6 md:mb-8 text-center text-base md:text-lg">Or send me a message directly</p>
+        <p className="text-gray-700 mb-6 md:mb-8 text-center text-base md:text-lg">Or send me a message directly</p>
 
         {/* Contact Form */}
         <form 
@@ -584,69 +617,69 @@ const LandingPage = () => {
             <h3 className="text-lg md:text-xl font-semibold text-[#2C4E35]">Send Me a Message</h3>
           </div>
           <div>
-            <label className="block text-xs md:text-sm font-medium mb-1 md:mb-2">First Name *</label>
+            <label className="block text-xs md:text-sm font-medium mb-1 md:mb-2 text-gray-900">First Name *</label>
             <input 
               type="text" 
               name="firstName"
               value={formData.firstName}
               onChange={handleInputChange}
               placeholder="Your First Name" 
-              className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base" 
+              className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base text-gray-900" 
               required
             />
           </div>
           <div>
-            <label className="block text-xs md:text-sm font-medium mb-1 md:mb-2">Last Name *</label>
+            <label className="block text-xs md:text-sm font-medium mb-1 md:mb-2 text-gray-900">Last Name *</label>
             <input 
               type="text" 
               name="lastName"
               value={formData.lastName}
               onChange={handleInputChange}
               placeholder="Your Last Name" 
-              className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base" 
+              className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base text-gray-900" 
               required
             />
           </div>
           <div>
-            <label className="block text-xs md:text-sm font-medium mb-1 md:mb-2">Email *</label>
+            <label className="block text-xs md:text-sm font-medium mb-1 md:mb-2 text-gray-900">Email *</label>
             <input 
               type="email" 
               name="email"
               value={formData.email}
               onChange={handleInputChange}
               placeholder="Your Email" 
-              className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base" 
+              className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base text-gray-900" 
               required
             />
           </div>
           <div>
-            <label className="block text-xs md:text-sm font-medium mb-1 md:mb-2">Subject *</label>
+            <label className="block text-xs md:text-sm font-medium mb-1 md:mb-2 text-gray-900">Subject *</label>
             <input 
               type="text" 
               name="subject"
               value={formData.subject}
               onChange={handleInputChange}
               placeholder="Your Subject" 
-              className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base" 
+              className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base text-gray-900" 
               required
             />
           </div>
           <div className="md:col-span-2">
-            <label className="block text-xs md:text-sm font-medium mb-1 md:mb-2">Message *</label>
+            <label className="block text-xs md:text-sm font-medium mb-1 md:mb-2 text-gray-900">Message *</label>
             <textarea 
               rows={3} 
               name="message"
               value={formData.message}
               onChange={handleInputChange}
               placeholder="Your Message" 
-              className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base"
+              className="w-full border border-gray-300 rounded-lg p-2 md:p-3 focus:ring-2 focus:ring-[#FFA800] focus:outline-none transition text-sm md:text-base text-gray-900"
               required
             ></textarea>
           </div>
           <div className="md:col-span-2 text-center">
             <button 
               type="submit"
-              className="bg-gradient-to-r from-[#2C4E35] to-[#FFA800] text-white px-6 py-2.5 md:px-8 md:py-3 rounded-full font-semibold transition-all duration-300 hover:shadow-lg w-full md:w-auto"
+              className="bg-[#2C4E35] text-white px-6 py-2.5 md:px-8 md:py-3 rounded-full font-semibold transition-all duration-300 hover:bg-[#3a6b47] hover:shadow-lg w-full md:w-auto"
             >
               Submit Message
             </button>
