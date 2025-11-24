@@ -12,7 +12,8 @@ import {
   FaWordpress,
   FaGitAlt,
   FaFigma,
-  FaGithub
+  FaGithub,
+  FaCode
 } from 'react-icons/fa';
 import { 
   SiNextdotjs, 
@@ -20,7 +21,6 @@ import {
   SiCodeigniter, 
   SiPostman, 
   SiVercel,
-  SiVisualstudiocode,
   SiCanva
 } from 'react-icons/si';
 import { TbApi } from 'react-icons/tb';
@@ -234,7 +234,7 @@ const LandingPage = () => {
     { 
       name: 'VS Code', 
       color: 'bg-blue-50 border-blue-200', 
-      icon: <SiVisualstudiocode className="text-blue-500 text-2xl" />,
+      icon: <FaCode className="text-blue-500 text-2xl" />,
       category: 'tools'
     },
     { 
@@ -456,13 +456,13 @@ const LandingPage = () => {
           <div className="md:w-1/2 max-w-xl z-10 order-2 md:order-1">
             <div className="space-y-2 mb-4">
               <p className="text-gray-700 text-base md:text-lg font-medium animate-fade-in">Hello There! 👋</p>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-snug animate-slide-up">
+              <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold leading-snug animate-slide-up">
                 I'm <span className="text-[#FFA800]">Belda Putri Pramono</span>
               </h1>
               <div className="h-1 w-20 bg-[#FFA800] rounded-full animate-grow-width"></div>
             </div>
             
-            <h2 className="text-xl md:text-2xl text-[#2C4E35] font-semibold mb-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+            <h2 className="text-3xl md:text-4xl text-[#2C4E35] font-semibold mb-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
               Frontend Developer
             </h2>
             
@@ -515,25 +515,25 @@ const LandingPage = () => {
           <div className="md:w-1/2 flex justify-center relative order-1 md:order-2">
             {/* Background Shape */}
             <div className="absolute inset-0 flex justify-center items-center">
-              <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 bg-[#FFA800] rounded-full blur-3xl opacity-20 animate-pulse"></div>
+              <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full blur-3xl opacity-20 animate-pulse"></div>
             </div>
 
             {/* Main Image Container */}
             <div className="relative group">
               {/* Outer Glow */}
-              <div className="absolute -inset-4 bg-[#FFA800] rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-500 animate-pulse"></div>
+              <div className="absolute -inset-4 rounded-full blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-500 animate-pulse"></div>
               
               {/* Image Frame */}
-              <div className="relative bg-white rounded-full p-2 shadow-2xl transform group-hover:scale-105 transition-transform duration-500">
-                <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white shadow-inner">
+              <div className="relative p-2 transform transition-transform duration-500">
+                <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
                   <img
                     src="/profile.png"
                     alt="Belda Putri Pramono - Frontend Developer"
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover scale-140 animate-tilt transition-transform duration-700"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.onerror = null;
-                      target.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjRkZBODAwIiBmaWxsLW9wYWNpdHk9IjAuMSIvPgo8Y2lyY2xlIGN4PSIyNTAiIGN5PSIyMDAiIHI9IjgwIiBmaWxsPSIjRkZBODAwIiBmaWxsLW9wYWNpdHk9IjAuNyIvPgo8cmVjdCB4PSIxNTAiIHk9IjMwMCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSI4MCIgZmlsbD0iI0ZBQTgwMCIgZmlsbC1vcGFjaXR5PSIwLjciLz4KPC9zdmc+";
+                      target.src = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDUwMCA1MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MDAiIGhelaWdodD0iNTAwIiBmaWxsPSIjRkZBODAwIiBmaWxsLW9wYWNpdHk9IjAuMSIvPgo8Y2lyY2xlIGN4PSIyNTAiIGN5PSIyMDAiIHI9IjgwIiBmaWxsPSIjRkZBODAwIiBmaWxsLW9wYWNpdHk9IjAuNyIvPgo8cmVjdCB4PSIxNTAiIHk9IjMwMCIgd2lkdGg9IjIwMCIgaGVpZ2h0PSI4MCIgZmlsbD0iI0ZBQTgwMCIgZmlsbC1vcGFjaXR5PSIwLjciLz4KPC9zdmc+";
                     }}
                   />
                 </div>
@@ -569,18 +569,18 @@ const LandingPage = () => {
               {/* Photo Container dengan Enhanced Design */}
               <div className="relative flex-shrink-0 group">
                 {/* Background Pattern */}
-                <div className="absolute -inset-4 bg-gradient-to-br from-[#FFA800] to-[#2C4E35] rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
+                <div className="absolute -inset-4 rounded-full opacity-10 group-hover:opacity-20 transition-opacity duration-500"></div>
                 
                 {/* Main Image Container */}
                 <div className="relative">
-                  {/* Outer Ring */}
-                  <div className="w-48 h-48 md:w-56 md:h-56 bg-gradient-to-br from-[#FFA800] to-[#2C4E35] rounded-full p-2 shadow-2xl transform group-hover:scale-105 transition-transform duration-500">
+                  {/* Outer Ring dengan animasi bounce */}
+                  <div className="w-48 h-48 md:w-56 md:h-56 rounded-full p-2 shadow-2xl transform transition-transform duration-500 animate-bounce-slow">
                     {/* Image Container */}
                     <div className="w-full h-full rounded-full overflow-hidden border-4 border-white bg-white">
                       <img
                         src="/profile-about-me.png"
                         alt="Belda Putri Pramono - Frontend Developer"
-                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                        className="w-full h-full object-cover scale-110 transition-transform duration-700"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
                           target.onerror = null;
