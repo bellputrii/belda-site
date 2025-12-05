@@ -325,7 +325,7 @@ const LandingPage = () => {
       demo: "localhost",
       preview: "https://github.com/bellputrii/LabGizi-Growish.git",
       techStack: ["Next.js", "React Hook Form", "Zod Validation", "Chart.js", "UI Components"],
-      category: "fullstack",
+      category: "frontend",
       status: "completed"
     },
     {
@@ -467,8 +467,8 @@ const LandingPage = () => {
             </h2>
             
             <p className="text-gray-800 text-sm md:text-base lg:text-lg mb-6 md:mb-8 leading-relaxed animate-slide-up" style={{ animationDelay: '0.4s' }}>
-              I specialize in building modern, responsive web applications using cutting-edge frontend technologies. 
-              Passionate about creating exceptional user experiences with clean, maintainable code and pixel-perfect designs.
+              I specialise in developing modern, responsive web applications using the latest front-end technologies. 
+              I am passionate about creating exceptional user experiences with clean, maintainable code and pixel-perfect designs.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: '0.6s' }}>
@@ -611,14 +611,12 @@ const LandingPage = () => {
                 
                 <div className="space-y-4 mb-6">
                   <p className="text-gray-800 leading-relaxed">
-                    I'm a passionate Frontend Developer with expertise in modern JavaScript frameworks, 
-                    responsive design, and performance optimization. I focus on creating scalable, 
-                    maintainable, and user-centric web applications.
+                    As a passionate front-end developer, I specialise in modern JavaScript frameworks, responsive design and performance optimisation. My focus is on creating scalable, maintainable and user-centric web applications.
                   </p>
                   
                   <p className="text-gray-800 leading-relaxed">
-                    My approach combines technical excellence with attention to detail, ensuring 
-                    every project delivers exceptional user experiences while maintaining clean, 
+                    My approach combines technical excellence with meticulous attention to detail. 
+                    Every project delivers exceptional user experiences while maintaining clean and efficient code architecture. 
                     efficient code architecture.
                   </p>
                 </div>
