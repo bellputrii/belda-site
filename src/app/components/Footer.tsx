@@ -199,7 +199,7 @@ const Footer = () => {
         <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4 text-center">
           <div className="flex items-center space-x-2 order-2 sm:order-1">
             <p className="text-white/80 text-xs sm:text-sm">
-              © 2025 – Created by Belda Putri Pramono. All rights reserved
+              © 2026 – Created by Belda Putri Pramono. All rights reserved
             </p>
           </div>
           <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 order-1 sm:order-2 mb-2 sm:mb-0">

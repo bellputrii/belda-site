@@ -378,6 +378,27 @@ const LandingPage = () => {
       category: "frontend",
       status: "completed"
     },
+    {
+      title: "AssetsFlow System",
+      desc: "Web-based asset management system with centralized admin dashboard to manage assets, borrowings, and maintenance workflows.",
+      image: "assets-flow.jfif",
+      demo: "https://assetsflow-hazel.vercel.app/",
+      preview: "#",
+      techStack: ["Laravel", "Next.js", "REST API", "MySQL", "Authentication"],
+      category: "fullstack",
+      status: "maintenance"
+    },
+    {
+      title: "PadiCheck AI",
+      desc: "AI-powered web application for rice leaf disease detection with image upload, prediction results, and detection history.",
+      image: "padi-check-ai.jfif",
+      demo: "http://padicheckai.vercel.app/",
+      preview: "#",
+      techStack: ["Next.js 15", "TypeScript", "Tailwind", "REST API", "Data Visualization"],
+      category: "frontend",
+      status: "completed"
+    }
+
   ];
 
   // Education data
