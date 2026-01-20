@@ -53,6 +53,8 @@ interface PortfolioItem {
 }
 
 const LandingPage = () => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [dialogTitle, setDialogTitle] = useState('')
   const [activeSection, setActiveSection] = useState<string>('home');
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const [activeSkillCategory, setActiveSkillCategory] = useState<number>(0);
@@ -126,7 +128,8 @@ const LandingPage = () => {
   // Fungsi untuk menangani alert portfolio localhost
   const handlePortfolioClick = (demoUrl: string, title: string) => {
     if (demoUrl === 'localhost') {
-      alert(`Website ${title} harus diakses secara localhost, karena keterbatasan akses backend yang sudah tidak aktif sistem hostingnya`);
+      setDialogTitle(title);
+      setIsDialogOpen(true);
       return false;
     }
     return true;
@@ -305,7 +308,7 @@ const LandingPage = () => {
       demo: "https://belda-site.vercel.app/",
       preview: "https://github.com/bellputrii/belda-site.git",
       techStack: ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"],
-      category: "frontend",
+      category: "fullstack",
       status: "completed"
     },
     {
@@ -355,7 +358,7 @@ const LandingPage = () => {
       demo: "https://wayangkita.sv.ugm.ac.id/",
       preview: "#",
       techStack: ["WordPress", "PHP", "Custom Theme", "Responsive Design", "CMS"],
-      category: "frontend",
+      category: "fullstack",
       status: "completed"
     },
     {
@@ -375,7 +378,7 @@ const LandingPage = () => {
       demo: "https://www.elokprinting.com/",
       preview: "#",
       techStack: ["WordPress", "WooCommerce", "Payment Gateway", "Custom CSS", "SEO"],
-      category: "frontend",
+      category: "fullstack",
       status: "completed"
     },
     {
@@ -383,7 +386,7 @@ const LandingPage = () => {
       desc: "Web-based asset management system with centralized admin dashboard to manage assets, borrowings, and maintenance workflows.",
       image: "assets-flow.jfif",
       demo: "https://assetsflow-hazel.vercel.app/",
-      preview: "#",
+      preview: "https://github.com/bellputrii/assetsFlow-fe.git",
       techStack: ["Laravel", "Next.js", "REST API", "MySQL", "Authentication"],
       category: "fullstack",
       status: "maintenance"
@@ -393,7 +396,7 @@ const LandingPage = () => {
       desc: "AI-powered web application for rice leaf disease detection with image upload, prediction results, and detection history.",
       image: "padi-check-ai.jfif",
       demo: "http://padicheckai.vercel.app/",
-      preview: "#",
+      preview: "https://github.com/bellputrii/fe-rice-leaf-disease-detection",
       techStack: ["Next.js 15", "TypeScript", "Tailwind", "REST API", "Data Visualization"],
       category: "frontend",
       status: "completed"
@@ -960,7 +963,6 @@ const LandingPage = () => {
             )}
           </div>
         </section>
-
         {/* Contact Section - Enhanced */}
         <section id="contact" className="py-16 md:py-20 px-4 md:px-8 lg:px-20 bg-white">
           <div className="max-w-6xl mx-auto">
@@ -1151,6 +1153,32 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
+
+        {isDialogOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+          <div className="bg-white rounded-xl shadow-lg max-w-md w-full p-6">
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">
+              Live Demo Tidak Tersedia
+            </h3>
+
+            <p className="text-sm text-gray-600 mb-6">
+              Website <span className="font-medium">{dialogTitle}</span> hanya dapat
+              diakses melalui <strong>localhost</strong> karena backend sudah tidak
+              aktif pada sistem hosting.
+            </p>
+
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={() => setIsDialogOpen(false)}
+                className="px-4 py-2 text-sm rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-100 transition"
+              >
+                Tutup
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       </div>
     </LayoutNavbar>
   );
